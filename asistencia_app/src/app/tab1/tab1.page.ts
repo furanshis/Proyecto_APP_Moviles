@@ -23,4 +23,8 @@ export class Tab1Page {
       // Mostrar algún mensaje de error
     }
   }
+
+  registrarse(){
+    this.router.navigate(['/tabs/tab3']);
+  }
 }
