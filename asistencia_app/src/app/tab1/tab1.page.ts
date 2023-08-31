@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { NavController } from '@ionic/angular';
+
+let navigationExtras: NavigationExtras = {
+  state: {username: this.username}
+};
 
 @Component({
   selector: 'app-tab1',
@@ -16,7 +20,7 @@ export class Tab1Page {
   login() {
     // Verificar las credenciales (esto es solo un ejemplo)
     if (this.username === 'admin' && this.password === 'hola') {
-      this.router.navigate(['/tabs/tab2']); // Redirigir a la Tab 2
+      this.router.navigate(['/tabs/tab2'], navigationExtras); // Redirigir a la Tab 2
       // O puedes usar navCtrl para redirigir:
       // this.navCtrl.navigateForward('/tabs/tab2');
     } else {
