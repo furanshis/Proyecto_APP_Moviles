@@ -27,4 +27,5 @@ export class Tab1Page {
   registrarse(){
     this.router.navigate(['/tabs/tab3']);
   }
+
 }
