@@ -3,7 +3,7 @@ import { Router, NavigationExtras } from '@angular/router';
 import { NavController } from '@ionic/angular';
 
 let navigationExtras: NavigationExtras = {
-  state: {username: this.username}
+
 };
 
 @Component({
