@@ -1,36 +1,43 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>contrasena</ion-title>
+    <ion-title>Recuperar contraseña</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
-    <ion-grid class="ion-padding">
-      <ion-row>
-        <ion-col size-md="6" offset-md="3">
-          <br>
-          <br>
-          <br>
-          <br>
-          <ion-card>
-            <ion-card-header>
-              <ion-card-title class="ion-text-center">Recuperar contraseña</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              <ion-item>
-                <ion-label position="floating">Contraseña nueva</ion-label>
-                <ion-input type="password"></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-label position="floating">Repetir contraseña</ion-label>
-                <ion-input type="password"></ion-input>
-              </ion-item>
-            </ion-card-content>
-            
-          </ion-card>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-header>
+    <ion-toolbar>
+      <ion-title size="large">Tab 1</ion-title>
+    </ion-toolbar>
+  </ion-header> 
+
+  <ion-grid class="ion-padding">
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <br>
+        <br>
+        <br>
+        <br>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title class="ion-text-center">Ingrese el Email</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item>
+              <ion-label position="floating">Email</ion-label>
+              <ion-input type="text" required></ion-input>
+            </ion-item>
+            <ion-button type="submit" color="danger" expand="block">Recuperar</ion-button>
+            <small>
+              Asegurese de utilizar el correo que utilizó para registrarse para la recepción del código.
+            </small>
+          </ion-card-content>
+        </ion-card>
+        
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+
 </ion-content>
+
