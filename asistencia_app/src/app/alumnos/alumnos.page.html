@@ -13,20 +13,20 @@
 
   <ion-list>
     <ion-item>
-      <ion-label position="floating">Nombre viaje</ion-label>
+      <ion-label position="floating">Nombre alumno</ion-label>
       <ion-input type="text" [(ngModel)]="studentname"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Precio del viaje</ion-label>
+      <ion-label position="floating">numero de alumno</ion-label>
       <ion-input type="number" [(ngModel)]="studentage"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Dirección</ion-label>
+      <ion-label position="floating">presente si o no</ion-label>
       <ion-input type="text" [(ngModel)]="address"></ion-input>
     </ion-item>
   </ion-list>
 
-  <ion-button expand="full" color="primary" (click)="createRecord()">Publicar viaje</ion-button>
+  <ion-button expand="full" color="primary" (click)="createRecord()">agregar a la lista</ion-button>
 </ion-content>
