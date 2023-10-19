@@ -13,6 +13,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore'; // Para
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database'; // Para Angular 16
 
 import { environment } from 'src/environments/environment';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
 
 
 @NgModule({
@@ -24,6 +26,7 @@ import { environment } from 'src/environments/environment';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireDatabaseModule,
+    MatSlideToggleModule,
   
     
     BrowserModule, IonicModule.forRoot(), IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
