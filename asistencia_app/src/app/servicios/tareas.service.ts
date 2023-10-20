@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 
+
 interface Student {
   direccion: string;
   edad: number;
@@ -22,4 +23,5 @@ export class TareasService {
     // Proporciona el nombre de la colección directamente, sin usar 'path:'
     return this.firestore.collection('Student').add(record);
   }
+
 }
