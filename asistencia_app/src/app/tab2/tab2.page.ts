@@ -17,12 +17,15 @@ let navigationExtras: NavigationExtras = {};
 
 export class Tab2Page implements OnInit {
 
+  username: string = ''
+
   //alumnos: Alumnos[];
 
   constructor(
     private router: Router,
     private navCtrl: NavController,
-    private alumnosService: AlumnosService 
+    private alumnosService: AlumnosService,
+    private stateService: StateService
   ) {
     //this.alumnos = [{
      // name: 'asas',
@@ -36,8 +39,10 @@ export class Tab2Page implements OnInit {
     //this.alumnosService.getAlumnos().subscribe(alumnos => {
       //this.alumnos = alumnos;
     //})
+    this.username = this.stateService.getUsername();
     
   }
+
 
   onClick() {
     this.alumnosService.logOut()
@@ -47,7 +52,5 @@ export class Tab2Page implements OnInit {
       .catch(error => console.log(error));
   }
 
-  navigateToAlumnosPage() {
-    this.navCtrl.navigateForward('/alumnos'); // Redirige a la página de agregar alumno
-  }
+  
 }

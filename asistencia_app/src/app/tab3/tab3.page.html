@@ -1,31 +1,33 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      <ion-title class="ion-text-center">Registro de usuario</ion-title>
-    </ion-title>
+    <ion-title>Crear viaje para alumnos</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
+      <ion-title size="large">Alumnos</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
-    <ion-list>
-      <ion-item>
-        <ion-label>correo</ion-label>
-        <ion-input formControlName="email"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>contraseña</ion-label>
-        <ion-input type="password" formControlName="password"></ion-input>
-      </ion-item>
-    </ion-list>
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Nombre alumno</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
 
-    <ion-button type="submit" expand="block">Registrarse</ion-button>
-  </form>
+    <ion-item>
+      <ion-label position="floating">numero de alumno</ion-label>
+      <ion-input type="number"></ion-input>
+    </ion-item>
 
+    <ion-item>
+      <ion-label position="floating">presente si o no</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="full" color="primary">agregar a la lista</ion-button>
 </ion-content>
+

@@ -33,20 +33,14 @@ export class Tab1Page {
     this.alumnosService.login(this.formLogin.value)
       .then(response => {
         console.log(response);
+        this.stateService.setUsername(this.formLogin.value.email);
+        this.router.navigate(['/tabs/tab2'], navigationExtras)
       })
       .catch(error => console.log(error));
   }
-
-  //onClick() {
-    //this.alumnosService.loginWithGoogle()
-      //.then(response => {
-        //console.log(response);
-        //this.router.navigate(['/main']);
-      //})
-      //.catch(error => console.log(error))
-  //}
+  
 
   registrarse(){
-    this.router.navigate(['/tabs/tab3']);
+    this.router.navigate(['/contrasena']);
   }
 }
