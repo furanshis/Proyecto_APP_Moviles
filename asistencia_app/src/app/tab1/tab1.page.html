@@ -1,5 +1,6 @@
 <ion-header>
   <ion-toolbar>
+    
     <ion-title class="ion-text-center">Bienvenidos</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -20,6 +21,11 @@
     </ion-toolbar>
   </ion-header> 
 
+
+      
+
+  
+
   <ion-grid class="ion-padding">
     <ion-row>
       <ion-col size-md="6" offset-md="3">
@@ -29,6 +35,7 @@
         <br>
         <ion-card>
           <ion-card-header>
+            <img  src="https://duoc.modyocdn.com/uploads/d1065e11-cde5-40b4-b58f-59004919c757/original/logo_duoc.svg">
             <ion-card-title class="ion-text-center">Iniciar Sesión</ion-card-title>
           </ion-card-header>
           <ion-card-content>
@@ -47,7 +54,10 @@
               <ion-button type="submit" expand="block">Iniciar Sesión</ion-button>
             </form>
             <br>
-            <ion-button expand="full" (click)="registrarse()">Registrarse</ion-button>
+            <ion-button expand="full" (click)="registrarse()">
+              Registrarse
+              <ion-icon slot="end" name="person-add-outline"></ion-icon>
+            </ion-button>
             <br>
             <ion-router-link routerLink="/codigo"> ¿Olvidaste tu contraseña? </ion-router-link>
           </ion-card-content>
