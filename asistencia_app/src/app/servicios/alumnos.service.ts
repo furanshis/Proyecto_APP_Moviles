@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { Firestore, collection, addDoc, collectionData } from '@angular/fire/firestore';
 import Alumnos from '../interfaces/alumnos.interfaces';
 import { Observable } from 'rxjs';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile, getAuth } from '@angular/fire/auth';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlumnosService {
+
+  user = getAuth().currentUser
 
   constructor(private firestore: Firestore, private auth: Auth) { }
 
@@ -33,5 +35,9 @@ export class AlumnosService {
 
   logOut() {
     return signOut(this.auth);
+  }
+
+  crearUsuario(displayName: string){
+    return updateProfile(this.auth.currentUser, {displayName})
   }
 }
