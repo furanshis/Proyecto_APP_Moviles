@@ -5,6 +5,7 @@ import { NavController } from '@ionic/angular';
 import { AlumnosService } from '../servicios/alumnos.service';
 import { StateService } from '../state.service'; // Ajusta la ruta según la ubicación real del servicio
 import { UtilsService } from '../servicios/utils.service';
+import { User } from '@angular/fire/auth';
 
 
 let navigationExtras: NavigationExtras = {};
@@ -32,6 +33,7 @@ export class Tab1Page {
   }
 
   async onSubmit() {
+    if (this.formLogin.valid){
 
     const loading = await this.utilsService.loading();
     await loading.present();
@@ -39,6 +41,49 @@ export class Tab1Page {
     this.alumnosService.login(this.formLogin.value)
       .then(response => {
         console.log(response);
+        this.getUserInfo(response.user.uid)
+
+      }).catch(error => {
+        console.log(error)
+
+        this.utilsService.presentToast({
+          message: error.message,
+          duration: 2500,
+          color: 'primary',
+          position: 'middle',
+          icon: 'alert-circle-outline'
+        })
+
+      }).finally(() => {
+        loading.dismiss()
+        //this.stateService.setUsername(this.formLogin.value.email);
+        //this.router.navigate(['/tabs/tab2'], navigationExtras)
+      })
+
+    }
+  }
+
+  async getUserInfo(uid: string) {
+
+    const loading = await this.utilsService.loading();
+    await loading.present();
+
+    let path = `alumnos/${uid}`;
+    
+
+    this.alumnosService.getDocument(path)
+      .then(user => {
+        this.utilsService.saveInLocalStorage('alumnos', user)
+        this.utilsService.routerLink('/tabs/tab2')
+        this.formLogin.reset()
+
+        this.utilsService.presentToast({
+          message: `Te damos la bienvenida ${user!['name']} `,
+          duration: 2500,
+          color: 'primary',
+          position: 'middle',
+          icon: 'alert-circle-outline'
+        })
 
       }).catch(error => {
         console.log(error)
@@ -62,4 +107,6 @@ export class Tab1Page {
   registrarse(){
     this.router.navigate(['/contrasena']);
   }
+
+ 
 }

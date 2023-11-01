@@ -1,8 +1,11 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
+  
+   
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+      </ion-buttons>
       <ion-title class="ion-text-center">Registro de usuario</ion-title>
-    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,19 +16,45 @@
     </ion-toolbar>
   </ion-header>
 
-  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
-    <ion-list>
-      <ion-item>
-        <ion-label>correo</ion-label>
-        <ion-input formControlName="email"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>contraseña</ion-label>
-        <ion-input type="password" formControlName="password"></ion-input>
-      </ion-item>
-    </ion-list>
-
-    <ion-button type="submit" expand="block">Registrarse</ion-button>
-  </form>
+  <ion-grid class="ion-padding">
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <br>
+        <br>
+        <br>
+        <br>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title class="ion-text-center">Registro de Usuario</ion-card-title>
+            <img  src="https://duoc.modyocdn.com/uploads/d1065e11-cde5-40b4-b58f-59004919c757/original/logo_duoc.svg">
+          </ion-card-header>
+          <ion-card-content>
+            <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+              <ion-list>
+                <ion-item>
+                  <ion-label>Nombre</ion-label>
+                  <ion-input formControlName="name"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label>correo</ion-label>
+                  <ion-input formControlName="email"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label>contraseña</ion-label>
+                  <ion-input type="password" formControlName="password"></ion-input>
+                </ion-item>
+              </ion-list>
+          
+              <ion-button type="submit" expand="block">Registrarse</ion-button>
+            </form>
+            <br>
+          
+            
+          </ion-card-content>
+          
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>

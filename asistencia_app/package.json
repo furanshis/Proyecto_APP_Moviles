@@ -37,6 +37,7 @@
     "@ionic/pwa-elements": "^3.2.2",
     "@types/body-parser": "^1.19.3",
     "cordova-sqlite-storage": "^6.1.0",
+    "dns": "^0.2.2",
     "firebase": "^10.4.0",
     "ionicons": "^7.0.0",
     "rxjs": "~7.8.0",

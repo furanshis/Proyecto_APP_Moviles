@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire/compat'; // Para Angular 16
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore'; // Para Angular 16
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database'; // Para Angular 16
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 
 import { environment } from 'src/environments/environment';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -31,8 +32,15 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
     
   
     
-    BrowserModule, IonicModule.forRoot(), IonicModule.forRoot(), AppRoutingModule, HttpClientModule, provideFirebaseApp(() => initializeApp(environment.firebase)), provideFirestore(() => getFirestore()), provideAuth(() => getAuth())],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+    BrowserModule, IonicModule.forRoot(), 
+    IonicModule.forRoot(), 
+    AppRoutingModule, 
+    HttpClientModule, 
+    provideFirebaseApp(() => initializeApp(environment.firebase)), 
+    provideFirestore(() => getFirestore()), 
+    provideAuth(() => getAuth())],
+  
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, { provide: FIREBASE_OPTIONS, useValue: environment.firebase }], 
   bootstrap: [AppComponent],
 
 
