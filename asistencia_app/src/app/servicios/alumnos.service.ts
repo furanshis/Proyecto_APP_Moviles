@@ -4,6 +4,7 @@ import Alumnos from '../interfaces/alumnos.interfaces';
 import { Observable } from 'rxjs';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile, getAuth, sendPasswordResetEmail } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { UtilsService } from './utils.service';
 
 
 @Injectable({
@@ -12,6 +13,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class AlumnosService {
 
   angularfire = inject(AngularFirestore)
+  utilService = inject(UtilsService)
 
   user = getAuth().currentUser
 
@@ -43,7 +45,9 @@ export class AlumnosService {
   }
 
   logOut() {
-    return signOut(this.auth);
+    signOut(this.auth);
+    localStorage.removeItem('alumnos')
+    this.utilService.routerLink('/tabs/tab1')
   }
 
   updateUsuario(displayName: string){

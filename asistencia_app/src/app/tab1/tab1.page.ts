@@ -74,6 +74,7 @@ export class Tab1Page {
     this.alumnosService.getDocument(path)
       .then(user => {
         this.utilsService.saveInLocalStorage('alumnos', user)
+        this.stateService.setUsername(user!['name'])
         this.utilsService.routerLink('/tabs/tab2')
         this.formLogin.reset()
 
@@ -107,6 +108,8 @@ export class Tab1Page {
   registrarse(){
     this.router.navigate(['/contrasena']);
   }
+
+ 
 
  
 }

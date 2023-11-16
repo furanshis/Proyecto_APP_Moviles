@@ -1,13 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { StateService } from '../state.service'; // Ajusta la ruta según la ubicación real del servicio
 import { NavController } from '@ionic/angular';
 import { TareasService } from '../servicios/tareas.service';
 import { AlumnosService } from '../servicios/alumnos.service';
 import Alumnos from '../interfaces/alumnos.interfaces';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { UtilsService } from '../servicios/utils.service';
+import { user } from '@angular/fire/auth';
 
 
 let navigationExtras: NavigationExtras = {};
+
+
 
 @Component({
   selector: 'app-tab2',
@@ -17,7 +22,13 @@ let navigationExtras: NavigationExtras = {};
 
 export class Tab2Page implements OnInit {
 
-  username: string = ''
+  angularfire = inject(AngularFirestore)
+  utilService = inject(UtilsService)
+
+  username = '';
+  
+  
+
 
   //alumnos: Alumnos[];
 
@@ -34,22 +45,27 @@ export class Tab2Page implements OnInit {
     //}];
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     // Obtén el nombre de usuario almacenado en el servicio y asígnalo a la variable
     //this.alumnosService.getAlumnos().subscribe(alumnos => {
       //this.alumnos = alumnos;
     //})
-    this.username = this.stateService.getUsername();
+    var val = localStorage.getItem('alumnos')!;
+    var object = JSON.parse(val);
+    this.username = object.name
     
   }
 
 
   onClick() {
     this.alumnosService.logOut()
-      .then(() => {
-        this.router.navigate(['/tabs/tab1']);
-      })
-      .catch(error => console.log(error));
+      
+  }
+
+  obtenerDato() {
+    var val = localStorage.getItem('alumnos')!;
+    var object = JSON.parse(val);
+    console.log(object.name)
   }
 
   
