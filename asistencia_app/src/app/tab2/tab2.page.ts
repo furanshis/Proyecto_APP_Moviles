@@ -8,9 +8,11 @@ import Alumnos from '../interfaces/alumnos.interfaces';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { UtilsService } from '../servicios/utils.service';
 import { user } from '@angular/fire/auth';
-import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
+import { Barcode, BarcodeScanner, BarcodeFormat, LensFacing, } from '@capacitor-mlkit/barcode-scanning';
 import { AlertController } from '@ionic/angular';
 import { Asistencia } from '../interfaces/asistencia.interfaces';
+
+
 
 
 
