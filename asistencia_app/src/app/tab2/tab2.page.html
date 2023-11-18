@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Home
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -14,22 +14,44 @@
   </ion-header>
   <p>Bienvenido "{{ username }}" </p>
 
+  <div class="content">
 
-  <ion-button expand="full" (click)="onClick()" >Cerrar Sesión</ion-button>
+    <ion-button class="ion-margin">
+      Escanear código QR
+      <ion-icon slot="end" name="camera-outline"></ion-icon>
+    </ion-button>
 
-  <ion-list>
-    <ion-item *ngFor="let barcode of barcodes">
-      <ion-label position="stacked">{{ barcode.format }}</ion-label>
-      <ion-input type="text" [value]="barcode.rawValue"></ion-input>
-    </ion-item>
-  </ion-list>
-  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-    <ion-fab-button (click)="scan()" [disabled]="!isSupported">
-      <ion-icon name="scan"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+    <ion-grid>
+      <ion-row>
+        <ion-col *ngFor="let asistencia of asistencias" size-lg="6" size-md="6" size-sm="12" size="12">
+          <ion-card>
+            <circle-progress
+            [percent]="85"
+            [radius]="65"
+            [outerStrokeWidth]="6"
+            [innerStrokeWidth]="4"
+            [outerStrokeColor]="'#78C000'"
+            [innerStrokeColor]="'#C7E596'"
+            [animation]="true"
+            [titleColor]="'var(--ion-color-dark)'"
+            [animationDuration]="300"
+            [subtitle]="'Asistencia'"
+            ></circle-progress>
+            <div class="title">{{ asistencia.asignatura }}</div>
+            <p>{{ asistencia.total_clases }}</p>
+            <p>{{ asistencia.clases_asistidas }}</p>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  
 
 
+  <ion-button expand="full"  (click)="onClick()" >
+    Cerrar Sesión
+    <ion-icon name="enter-outline"></ion-icon>
+  </ion-button>
 
 
 </ion-content>

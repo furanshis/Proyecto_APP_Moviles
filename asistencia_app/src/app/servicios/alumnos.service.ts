@@ -70,6 +70,14 @@ export class AlumnosService {
     return (await getDoc(doc(getFirestore(), path))).data()
   }
 
+  getSubcollection(path: string, subCollectionName: string){
+    return this.angularfire.doc(path).collection(subCollectionName).valueChanges({idField: 'id'})
+  }
+
+  updateDocument(path: string, object: any){
+    return this.angularfire.doc(path).update(object)
+  }
+
 
 
 }

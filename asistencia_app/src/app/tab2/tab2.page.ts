@@ -10,6 +10,9 @@ import { UtilsService } from '../servicios/utils.service';
 import { user } from '@angular/fire/auth';
 import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 import { AlertController } from '@ionic/angular';
+import { Asistencia } from '../interfaces/asistencia.interfaces';
+
+
 
 
 let navigationExtras: NavigationExtras = {};
@@ -28,10 +31,8 @@ export class Tab2Page implements OnInit {
   utilService = inject(UtilsService)
 
   username = '';
-  isSupported = false;
-  barcodes: Barcode[] = [];
   
-  
+  asistencias: Asistencia[] = []
 
 
   //alumnos: Alumnos[];
@@ -58,13 +59,11 @@ export class Tab2Page implements OnInit {
     var val = localStorage.getItem('alumnos')!;
     var object = JSON.parse(val);
     this.username = object.name
-
-    BarcodeScanner.isSupported().then((result) => {
-      this.isSupported = result.supported;
-    });
-    
   }
 
+  ionViewWillEnter() {
+    this.getAsistencia()
+  }
 
   onClick() {
     this.alumnosService.logOut()
@@ -77,29 +76,20 @@ export class Tab2Page implements OnInit {
     console.log(object.name)
   }
 
-  async scan(): Promise<void> {
-    const granted = await this.requestPermissions();
-    if (!granted) {
-      this.presentAlert();
-      return;
-    }
-    const { barcodes } = await BarcodeScanner.scan();
-    this.barcodes.push(...barcodes);
+  getAsistencia(){
+    var val = localStorage.getItem('alumnos')!;
+    var object = JSON.parse(val);
+    let path = `alumnos/${object.uid}`
+    let sub = this.alumnosService.getSubcollection(path, 'asistencia').subscribe({
+      next: (res: Asistencia[] | any) => {
+        console.log(res)
+        this.asistencias = res
+        sub.unsubscribe()
+      }
+    })
   }
 
-  async requestPermissions(): Promise<boolean> {
-    const { camera } = await BarcodeScanner.requestPermissions();
-    return camera === 'granted' || camera === 'limited';
-  }
-
-  async presentAlert(): Promise<void> {
-    const alert = await this.alertController.create({
-      header: 'Permission denied',
-      message: 'Please grant camera permission to use the barcode scanner.',
-      buttons: ['OK'],
-    });
-    await alert.present();
-  }
+  
 }
 
   
