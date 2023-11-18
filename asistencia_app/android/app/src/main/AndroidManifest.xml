@@ -38,7 +38,6 @@
     </application>
 
     <!-- Permissions -->
-
     <!-- To get access to the camera. -->
     <uses-permission android:name="android.permission.CAMERA" />
     <!-- To get access to the flashlight. -->

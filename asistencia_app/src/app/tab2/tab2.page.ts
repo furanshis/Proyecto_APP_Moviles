@@ -12,14 +12,7 @@ import { Barcode, BarcodeScanner, BarcodeFormat, LensFacing, } from '@capacitor-
 import { AlertController } from '@ionic/angular';
 import { Asistencia } from '../interfaces/asistencia.interfaces';
 
-
-
-
-
-
 let navigationExtras: NavigationExtras = {};
-
-
 
 @Component({
   selector: 'app-tab2',
@@ -36,6 +29,9 @@ export class Tab2Page implements OnInit {
   
   asistencias: Asistencia[] = []
 
+  isSupported = false;
+  barcodes: Barcode[] = [];
+
 
   //alumnos: Alumnos[];
 
@@ -45,22 +41,16 @@ export class Tab2Page implements OnInit {
     private alumnosService: AlumnosService,
     private stateService: StateService,
     private alertController: AlertController
-  ) {
-    //this.alumnos = [{
-     // name: 'asas',
-    //  contrasena: 'asasa',
-    //  correo: 'asasa',
-    //}];
-  }
+  ) {}
 
   ngOnInit() {
-    // Obtén el nombre de usuario almacenado en el servicio y asígnalo a la variable
-    //this.alumnosService.getAlumnos().subscribe(alumnos => {
-      //this.alumnos = alumnos;
-    //})
     var val = localStorage.getItem('alumnos')!;
     var object = JSON.parse(val);
-    this.username = object.name
+    this.username = object.name;
+
+    BarcodeScanner.isSupported().then((result) => {
+      this.isSupported = result.supported;
+    });
   }
 
   ionViewWillEnter() {
@@ -89,6 +79,30 @@ export class Tab2Page implements OnInit {
         sub.unsubscribe()
       }
     })
+  }
+
+  async scan(): Promise<void> {
+    const granted = await this.requestPermissions();
+    if (!granted) {
+      this.presentAlert();
+      return;
+    }
+    const { barcodes } = await BarcodeScanner.scan();
+    this.barcodes.push(...barcodes);
+  }
+
+  async requestPermissions(): Promise<boolean> {
+    const { camera } = await BarcodeScanner.requestPermissions();
+    return camera === 'granted' || camera === 'limited';
+  }
+
+  async presentAlert(): Promise<void> {
+    const alert = await this.alertController.create({
+      header: 'Permission denied',
+      message: 'Please grant camera permission to use the barcode scanner.',
+      buttons: ['OK'],
+    });
+    await alert.present();
   }
 
   
