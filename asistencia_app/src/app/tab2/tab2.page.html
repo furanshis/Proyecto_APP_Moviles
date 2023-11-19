@@ -14,10 +14,19 @@
   </ion-header>
   <p>Bienvenido "{{ username }}" </p>
 
-  <div class="content">
+    <div class="content">
+    <!-- For camera -->
+    <ngx-scanner-qrcode #action="scanner"></ngx-scanner-qrcode>
 
-    <ion-button class="ion-margin">
-      Escanear código QR
+    <!-- data  -->
+    <span>{{ action.data.value | json }}</span><!-- value -->
+    <span>{{ action.data | async | json }}</span><!-- async -->
+
+    <!-- Loading -->
+    <p *ngIf="action.isLoading">Loading...</p>
+
+    <ion-button class="ion-margin" (click)="action.isStart ? action.stop() : action.start()">
+      {{action.isStart ? 'Stop' : 'Escanear codigo Qr'}}
       <ion-icon slot="end" name="camera-outline"></ion-icon>
     </ion-button>
 
@@ -50,10 +59,11 @@
     Cerrar Sesión
     <ion-icon name="enter-outline"></ion-icon>
   </ion-button>
-  
-  <!-- botón para escanear código QR --> 
+
   
 
+<!-- start -->
+<button ></button>
 
 
 </ion-content>

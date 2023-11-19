@@ -10,7 +10,7 @@ export class UtilsService {
   loadingCtrl = inject(LoadingController);
   toastCtrl = inject(ToastController)
   router = inject(Router)
-
+  
 
   loading(){
     return this.loadingCtrl.create({ spinner: 'crescent' })

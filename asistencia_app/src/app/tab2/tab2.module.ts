@@ -7,8 +7,13 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { NgCircleProgressModule } from 'ng-circle-progress';
 
+import { NgxScannerQrcodeModule, LOAD_WASM } from 'ngx-scanner-qrcode';
+
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
+
+
+LOAD_WASM().subscribe();
 
 @NgModule({
   imports: [
@@ -16,6 +21,7 @@ import { Tab2PageRoutingModule } from './tab2-routing.module';
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
+    NgxScannerQrcodeModule,
     Tab2PageRoutingModule,
     NgCircleProgressModule.forRoot({
       // set defaults here
