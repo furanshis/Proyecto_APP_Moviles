@@ -7,6 +7,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { NgCircleProgressModule } from 'ng-circle-progress';
 
+
 import { Tab2PageRoutingModule } from './tab2-routing.module';
 
 @NgModule({

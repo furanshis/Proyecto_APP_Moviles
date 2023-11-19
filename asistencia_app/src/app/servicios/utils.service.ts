@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController, ToastController, ToastOptions } from '@ionic/angular';
+import { Asistencia } from '../interfaces/asistencia.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -35,4 +36,14 @@ export class UtilsService {
   getFromLocalStorage(key: string) {
     return JSON.parse(localStorage.getItem(key)!)
   }
+
+  //obtener el porsentaje de asistencia
+  getProcentaje(asistencia: Asistencia){
+    let porcentaje = (100 * asistencia.clases_asistidas) / asistencia.total_clases
+
+    return parseInt(porcentaje.toString())
+  }
 }
+
+
+

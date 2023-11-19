@@ -8,7 +8,7 @@ import Alumnos from '../interfaces/alumnos.interfaces';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { UtilsService } from '../servicios/utils.service';
 import { user } from '@angular/fire/auth';
-import { Barcode, BarcodeScanner, BarcodeFormat, LensFacing, } from '@capacitor-mlkit/barcode-scanning';
+//import { Barcode, BarcodeScanner, BarcodeFormat, LensFacing, } from '@capacitor-mlkit/barcode-scanning';
 import { AlertController } from '@ionic/angular';
 import { Asistencia } from '../interfaces/asistencia.interfaces';
 
@@ -28,9 +28,7 @@ export class Tab2Page implements OnInit {
   username = '';
   
   asistencias: Asistencia[] = []
-
-  isSupported = false;
-  barcodes: Barcode[] = [];
+ 
 
 
   //alumnos: Alumnos[];
@@ -40,7 +38,8 @@ export class Tab2Page implements OnInit {
     private navCtrl: NavController,
     private alumnosService: AlumnosService,
     private stateService: StateService,
-    private alertController: AlertController
+    private alertController: AlertController,
+
   ) {}
 
   ngOnInit() {
@@ -48,9 +47,7 @@ export class Tab2Page implements OnInit {
     var object = JSON.parse(val);
     this.username = object.name;
 
-    BarcodeScanner.isSupported().then((result) => {
-      this.isSupported = result.supported;
-    });
+
   }
 
   ionViewWillEnter() {
@@ -81,30 +78,11 @@ export class Tab2Page implements OnInit {
     })
   }
 
-  async scan(): Promise<void> {
-    const granted = await this.requestPermissions();
-    if (!granted) {
-      this.presentAlert();
-      return;
-    }
-    const { barcodes } = await BarcodeScanner.scan();
-    this.barcodes.push(...barcodes);
+  getPorcentaje(asistencia: Asistencia){
+    return this.utilService.getProcentaje(asistencia)
   }
 
-  async requestPermissions(): Promise<boolean> {
-    const { camera } = await BarcodeScanner.requestPermissions();
-    return camera === 'granted' || camera === 'limited';
-  }
-
-  async presentAlert(): Promise<void> {
-    const alert = await this.alertController.create({
-      header: 'Permission denied',
-      message: 'Please grant camera permission to use the barcode scanner.',
-      buttons: ['OK'],
-    });
-    await alert.present();
-  }
-
+  
   
 }
 

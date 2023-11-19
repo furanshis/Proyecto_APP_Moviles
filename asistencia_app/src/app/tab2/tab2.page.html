@@ -26,7 +26,7 @@
         <ion-col *ngFor="let asistencia of asistencias" size-lg="6" size-md="6" size-sm="12" size="12">
           <ion-card>
             <circle-progress
-            [percent]="85"
+            [percent]="getPorcentaje(asistencia)"
             [radius]="65"
             [outerStrokeWidth]="6"
             [innerStrokeWidth]="4"
@@ -46,24 +46,9 @@
     </ion-grid>
   </div>
   
+  <!-- botón para escanear código QR --> 
+  
 
-
-  <ion-button expand="full"  (click)="onClick()" >
-    Cerrar Sesión
-    <ion-icon name="enter-outline"></ion-icon>
-  </ion-button>
-
-  <ion-list>
-    <ion-item *ngFor="let barcode of barcodes">
-      <ion-label position="stacked">{{ barcode.format }}</ion-label>
-      <ion-input type="text" [value]="barcode.rawValue"></ion-input>
-    </ion-item>
-  </ion-list>
-  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-    <ion-fab-button (click)="scan()" [disabled]="!isSupported">
-      <ion-icon name="scan"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
 
 
 </ion-content>
