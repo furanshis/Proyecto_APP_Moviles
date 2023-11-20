@@ -1,0 +1,19 @@
+<ion-content>
+<!--HEADER -->
+<div class="header">  
+  <h1>Menu</h1>
+  <div class="avatar">
+    <ion-img src="https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn-icons-png.flaticon.com%2F512%2F6073%2F6073873.png&tbnid=hA60o-aLRV6SeM&vet=12ahUKEwiGldqZ6NGCAxWbv5UCHfAQBOYQMygCegQIARBf..i&imgrefurl=https%3A%2F%2Fwww.flaticon.es%2Ficono-gratis%2Fperfil-del-usuario_6073873&docid=noCxp27EqPnoGM&w=512&h=512&q=icono%20perfil&client=opera-gx&ved=2ahUKEwiGldqZ6NGCAxWbv5UCHfAQBOYQMygCegQIARBf"></ion-img>
+  </div>
+</div>
+
+<!--SEARCHBAR  renzito <--maricon hijo del pico basura qla lo va ver-->
+<app-searchbar></app-searchbar>
+
+<!-- CATEGORY -->
+<div class="categories">
+<app-category-item *ngFor="let item of categories" [item]="item"></app-category-item>
+  
+</div>
+</ion-content>
+<!-- -->

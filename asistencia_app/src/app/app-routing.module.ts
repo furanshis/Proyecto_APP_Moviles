@@ -25,6 +25,11 @@ const routes: Routes = [
     loadChildren: () => import('./codigo/codigo.module').then( m => m.CodigoPageModule),
     ...canActivate(() => redirectLoggedInTo(['/tabs/tab2']))
   },
+  {
+    path: 'menu-alumno',
+    loadChildren: () => import('./menu-alumno/menu-alumno.module').then( m => m.MenuAlumnoPageModule)
+  },
+
   
 ];
 @NgModule({

@@ -11,12 +11,14 @@ import { NgxScannerQrcodeModule, LOAD_WASM } from 'ngx-scanner-qrcode';
 
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
-
+import { SharedTestingModule } from '../../tests/modules';
+import {Tab2ModalComponent} from './tab2-modal.component'
 
 LOAD_WASM().subscribe();
 
 @NgModule({
   imports: [
+    SharedTestingModule,
     IonicModule,
     CommonModule,
     FormsModule,
@@ -33,6 +35,6 @@ LOAD_WASM().subscribe();
       animationDuration: 300,
     }),
   ],
-  declarations: [Tab2Page]
+  declarations: [Tab2Page, Tab2ModalComponent]
 })
 export class Tab2PageModule {}

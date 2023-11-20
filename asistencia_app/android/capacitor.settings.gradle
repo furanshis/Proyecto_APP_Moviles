@@ -26,5 +26,8 @@ project(':capacitor-preferences').projectDir = new File('../node_modules/@capaci
 include ':capacitor-status-bar'
 project(':capacitor-status-bar').projectDir = new File('../node_modules/@capacitor/status-bar/android')
 
+include ':capawesome-capacitor-file-picker'
+project(':capawesome-capacitor-file-picker').projectDir = new File('../node_modules/@capawesome/capacitor-file-picker/android')
+
 include ':dutchconcepts-capacitor-barcode-scanner'
 project(':dutchconcepts-capacitor-barcode-scanner').projectDir = new File('../node_modules/@dutchconcepts/capacitor-barcode-scanner/android')
