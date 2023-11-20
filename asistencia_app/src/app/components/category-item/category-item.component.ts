@@ -8,7 +8,5 @@ import { CategoryItemModule } from './category-item.module';
   styleUrls: ['./category-item.component.scss'],
 })
 export class CategoryItemComponent {
-  @Input()
-  item: Category[] = [];
-
+  @Input() item!: Category;
 }

@@ -19,7 +19,7 @@ export class MenuAlumnoPage implements OnInit {
       {
         id: 1,
         label: 'Yo',
-        image: 'asistencia_app/src/assets/icon/business-people.png',
+        image: 'asistencia_app/src/assets/icon/libros.png',
         active: true,
       },
       {
