@@ -17,3 +17,21 @@ ion-card:hover{
     padding-top: 10px;
     line-height: 20px;
 }
+
+
+.welcome-bar {
+    background-color: #3498db; /* Color de fondo, ajusta según tus preferencias */
+    color: #fff; /* Color del texto, ajusta según tus preferencias */
+    padding: 10px; /* Espaciado interno, ajusta según tus necesidades */
+    text-align: center;
+  
+    .welcome-message {
+      margin: 0;
+      font-size: 14px; /* Tamaño de fuente, ajusta según tus preferencias */
+  
+      .username {
+        font-weight: bold;
+      }
+    }
+  }
+  
