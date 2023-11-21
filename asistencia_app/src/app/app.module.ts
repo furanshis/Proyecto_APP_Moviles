@@ -20,6 +20,8 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 
+import { EmailComposer } from '@awesome-cordova-plugins/email-composer/ngx'
+
 
 
 @NgModule({
@@ -40,7 +42,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
     provideFirestore(() => getFirestore()), 
     provideAuth(() => getAuth())],
   
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, { provide: FIREBASE_OPTIONS, useValue: environment.firebase }], 
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, { provide: FIREBASE_OPTIONS, useValue: environment.firebase }, EmailComposer], 
   bootstrap: [AppComponent],
 
 

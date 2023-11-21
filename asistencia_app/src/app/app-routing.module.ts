@@ -28,7 +28,11 @@ const routes: Routes = [
   {
     path: 'menu-alumno',
     loadChildren: () => import('./menu-alumno/menu-alumno.module').then( m => m.MenuAlumnoPageModule)
+  },  {
+    path: 'codigoqr',
+    loadChildren: () => import('./codigoqr/codigoqr.module').then( m => m.CodigoqrPageModule)
   },
+
 
   
 ];
