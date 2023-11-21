@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-feature android:name="android.hardware.camera"/>
+    <!-- Permissions -->
+    <!-- To get access to the camera. -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- To get access to the flashlight. -->
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
 
     <application
         android:allowBackup="true"
@@ -34,16 +47,12 @@
                 android:resource="@xml/file_paths"></meta-data>
         </provider>
         <meta-data android:name="google_analytics_automatic_screen_reporting_enabled" android:value="false" />
-        <meta-data android:name="com.google.mlkit.vision.DEPENDENCIES" android:value="barcode_ui"/>
+      <!-- <meta-data android:name="com.google.mlkit.vision.DEPENDENCIES" android:value="barcode_ui"/> -->
+      <meta-data
+        android:name="com.google.mlkit.vision.DEPENDENCIES" android:value="barcode" />
+
         <!-- To use multiple models: android:value="face,model2,model3" -->
     </application>
 
-    <uses-feature android:name="android.hardware.camera" android:required="false" />
-    <!-- Permissions -->
-    <!-- To get access to the camera. -->
-    <uses-permission android:name="android.permission.CAMERA" />
-    <!-- To get access to the flashlight. -->
-    <uses-permission android:name="android.permission.FLASHLIGHT"/>
 
-    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
